@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dominic Dietrich - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0b1120;
+            --card-bg: #131f37;
+            --accent-blue: #00d2ff;
+            --accent-glow: #00a2ff;
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --tag-bg: #1e293b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Floating Pill Nav Bar */
+        nav {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(19, 31, 55, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 210, 255, 0.2);
+            padding: 10px 24px;
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            z-index: 1000;
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.15);
+        }
+
+        nav .logo {
+            font-family: 'Fira Code', monospace;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 1px;
+            margin-right: 10px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent-blue);
+        }
+
+        .btn-hire {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-glow));
+            color: #000 !important;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-weight: 700 !important;
+            box-shadow: 0 0 10px rgba(0, 210, 255, 0.4);
+        }
+
+        /* Hero Section */
+        header {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 120px 10% 60px;
+            position: relative;
+        }
+
+        .hero-text {
+            max-width: 600px;
+        }
+
+        .hero-text h3 {
+            color: var(--accent-blue);
+            font-family: 'Fira Code', monospace;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .hero-text p {
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+        }
+
+        .cta-group {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-glow));
+            color: #000;
+            padding: 12px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hero-avatar {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 0 50px rgba(0, 210, 255, 0.3);
+        }
+
+        /* Tech Banner Overlay */
+        .tech-banner {
+            width: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 210, 255, 0.1), transparent);
+            border-top: 1px solid rgba(0, 210, 255, 0.2);
+            border-bottom: 1px solid rgba(0, 210, 255, 0.2);
+            padding: 15px 0;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            color: var(--accent-blue);
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .section-title span {
+            color: var(--accent-blue);
+            text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 50px;
+            font-size: 0.9rem;
+        }
+
+        /* Layout Grid */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        /* Cards */
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 25px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 210, 255, 0.4);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .card-subtitle {
+            color: var(--accent-blue);
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+        }
+
+        .card-date {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-family: 'Fira Code', monospace;
+        }
+
+        .card ul {
+            list-style: none;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .card ul li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 18px;
+        }
+
+        .card ul li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--accent-blue);
+        }
+
+        /* Tags */
+        .tag-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .tag {
+            background-color: var(--tag-bg);
+            color: var(--accent-blue);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-family: 'Fira Code', monospace;
+            border: 1px solid rgba(0, 210, 255, 0.2);
+        }
+
+        /* Specific Component Adjustments */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .stat-box h2 {
+            font-size: 2rem;
+            color: var(--accent-blue);
+        }
+
+        .stat-box p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 100px;
+            }
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+            .hero-avatar {
+                margin-top: 40px;
+                width: 250px;
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating Navigation Bar -->
+    <nav>
+        <div class="logo">DOMINIC</div>
+        <a href="#about">About</a>
+        <a href="#coursework">Coursework</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="mailto:dietrichdom05@gmail.com" class="btn-hire">Contact</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <header>
+        <div class="hero-text">
+            <h3>DOMINIC DIETRICH</h3>
+            <h1>Hi, I'm Dominic<br>Computer Engineer</h1>
+            <p>A flexible, committed computer engineering student eager to apply academic knowledge to industry environments, specializing in microcontrollers, circuit design, and software integration[cite: 1].</p>
+            <div class="cta-group">
+                <a href="mailto:dietrichdom05@gmail.com" class="btn-primary">Get In Touch</a>
+            </div>
+        </div>
+        <div class="hero-avatar">
+            <!-- Neon Frame Graphic Placeholder -->
+            <div style="width: 80%; height: 80%; border: 2px solid var(--accent-blue); border-radius: 50%; box-shadow: inset 0 0 20px var(--accent-glow); display: flex; align-items: center; justify-content: center;">
+                <span style="font-size: 4rem;">⚡</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Tech Banner -->
+    <div class="tech-banner">
+        <span>⚡ Python 3.14</span>
+        <span>⚡ C / C++</span>
+        <span>⚡ MATLAB</span>
+        <span>⚡ KiCad 10.0</span>
+        <span>⚡ Arch Linux</span>
+    </div>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">⚡ About <span>Me</span> ⚡</h2>
+        <p class="section-subtitle">San Jose, CA | (669)-214-5908 | dietrichdom05@gmail.com[cite: 1]</p>
+        <div class="grid-2">
+            <div>
+                <p style="color: var(--text-muted); font-size: 0.95rem;">
+                    I am a computer engineering student at LMU with strong communication skills, programming principles, and familiarity across multiple technical fields[cite: 1]. My adaptability enables me to jump into diverse projects ranging from custom PCB prototyping to video production workflows[cite: 1].
+                </p>
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <h2>3.75</h2>
+                        <p>Academic GPA[cite: 1]</p>
+                    </div>
+                    <div class="stat-box">
+                        <h2>LMU</h2>
+                        <p>B.S.E Computer Engineering[cite: 1]</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-title" style="color: var(--accent-blue); margin-bottom: 10px;">Additional Skills[cite: 1]</div>
+                <div class="tag-group">
+                    <span class="tag">Windows 10/11</span><span class="tag">Raspbian OS</span><span class="tag">Arch Linux</span>
+                    <span class="tag">Python</span><span class="tag">Java</span><span class="tag">MATLAB</span><span class="tag">VS Code</span><span class="tag">C++</span>
+                    <span class="tag">AutoCAD</span><span class="tag">Fusion360</span><span class="tag">SolidWorks</span><span class="tag">KiCad 10.0</span>
+                    <span class="tag">DaVinci Resolve</span><span class="tag">OBS</span><span class="tag">Slack/Discord</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Relevant Coursework Section -->
+    <section id="coursework">
+        <h2 class="section-title">⚡ Relevant <span>Coursework</span> ⚡</h2>
+        <p class="section-subtitle">Academic foundations at Loyola Marymount University[cite: 1]</p>
+        <div class="grid-3">
+            <div class="card">
+                <div class="card-title">Microcontrollers & Microprocessors</div>
+                <div class="card-subtitle">Aug 2026 – Present</div>
+                <p style="font-size: 0.85rem; color: var(--text-muted);">Learning concepts and organization of microcontroller and microprocessor systems, including Assembly and C programming principles[cite: 1].</p>
+            </div>
+            <div class="card">
+                <div class="card-title">Electronics</div>
+                <div class="card-subtitle">Aug 2026 – Present</div>
+                <p style="font-size: 0.85rem; color: var(--text-muted);">Fundamentals of semiconductor devices, diodes, transistors, and circuit applications using CAD principles[cite: 1].</p>
+            </div>
+            <div class="card">
+                <div class="card-title">Circuits II</div>
+                <div class="card-subtitle">Jan 2026 – May 2026</div>
+                <p style="font-size: 0.85rem; color: var(--text-muted);">Second-order, 3-phase, and magnetically coupled circuits; Laplace transform and Fourier analysis applications[cite: 1].</p>
+            </div>
+            <div class="card">
+                <div class="card-title">Discrete Mathematics for CS</div>
+                <div class="card-subtitle">Jan 2026 – May 2026</div>
+                <p style="font-size: 0.85rem; color: var(--text-muted);">Logic, proof strategies, graph theory, discrete probability implemented via Python 3 and VS Code[cite: 1].</p>
+            </div>
+            <div class="card">
+                <div class="card-title">Engineering Visualization</div>
+                <div class="card-subtitle">Jan 2024 – May 2024</div>
+                <p style="font-size: 0.85rem; color: var(--text-muted);">Measured, graphed, and illustrated mechanical parts and assemblies using AutoCAD and SolidWorks[cite: 1].</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2 class="section-title">⚡ Featured <span>Projects</span> ⚡</h2>
+        <p class="section-subtitle">Hands-on engineering and creative applications[cite: 1]</p>
+        <div class="grid-3">
+            <div class="card">
+                <div class="card-title">CubeSat Raspberry Pi & SDR Integration</div>
+                <div class="card-subtitle">June 2026</div>
+                <ul>
+                    <li>Designed and documented Raspberry Pi Zero with SDR integration to custom PCB mount connecting to an I2C satellite device[cite: 1].</li>
+                </ul>
+                <div class="tag-group"><span class="tag">Raspberry Pi</span><span class="tag">SDR</span><span class="tag">PCB</span><span class="tag">I2C</span></div>
+            </div>
+            <div class="card">
+                <div class="card-title">Electronic Piano Prototype</div>
+                <div class="card-subtitle">November 2024</div>
+                <ul>
+                    <li>Researched and constructed an electronic keyboard prototype tuned with resistors capable of playing a 10-note song[cite: 1].</li>
+                </ul>
+                <div class="tag-group"><span class="tag">Hardware</span><span class="tag">Circuits</span><span class="tag">Prototyping</span></div>
+            </div>
+            <div class="card">
+                <div class="card-title">Visual Backgrounds & Effects Director</div>
+                <div class="card-subtitle">April 2024</div>
+                <ul>
+                    <li>Led a team of editors using DaVinci Resolve and Premiere Pro to display projected background visuals for live performances[cite: 1].</li>
+                </ul>
+                <div class="tag-group"><span class="tag">DaVinci Resolve</span><span class="tag">Premiere Pro</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Experience Section -->
+    <section id="experience">
+        <h2 class="section-title">⚡ Professional <span>Experience</span> ⚡</h2>
+        <p class="section-subtitle">Industry, research, and campus positions[cite: 1]</p>
+        <div class="grid-2">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">CubeSat Student Research Assistant</div>
+                    <div class="card-date">May 2026 – July 2026</div>
+                </div>
+                <div class="card-subtitle">Summer Undergraduate Research Program, LMU, CA[cite: 1]</div>
+                <ul>
+                    <li>Communicated with professor and team members to integrate PCB prototype to CubeSat project and documentation for future development[cite: 1].</li>
+                </ul>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Classroom Support Technician</div>
+                    <div class="card-date">Feb 2026 – Present</div>
+                </div>
+                <div class="card-subtitle">Information Technology Services, LMU, CA[cite: 1]</div>
+                <ul>
+                    <li>Resolved client concerns via Microsoft Teams and maintained event audio-visual systems[cite: 1].</li>
+                </ul>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Administrative Assistant</div>
+                    <div class="card-date">June 2021 – Present</div>
+                </div>
+                <div class="card-subtitle">Accurate Appraisal & Review, San Jose, CA[cite: 1]</div>
+                <ul>
+                    <li>Maintained accounting and appraisal accounts, kept over 300 records, and prepared private GPAR reports[cite: 1].</li>
+                </ul>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">Admin. Assistant (Work-Study)</div>
+                    <div class="card-date">Aug 2024 – Feb 2026</div>
+                </div>
+                <div class="card-subtitle">Facilities Management, LMU[cite: 1]</div>
+                <ul>
+                    <li>Assigned work orders to campus maintenance and coordinated priority updates with department supervisors[cite: 1].</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <h2 class="section-title">⚡ Academic <span>Education</span> ⚡</h2>
+        <p class="section-subtitle">Degrees and academic programs[cite: 1]</p>
+        <div class="grid-2">
+            <div class="card">
+                <div class="card-title">B.S.E in Computer Engineering</div>
+                <div class="card-subtitle">Loyola Marymount University | Aug 2024 – May 2028[cite: 1]</div>
+                <ul>
+                    <li>3.75 GPA | IEEE Club, Animation Club, XTMA Martial Arts[cite: 1]</li>
+                    <li>Study Abroad for Engineering in Bonn, Germany (Aug 2025 – Dec 2026)[cite: 1]</li>
+                    <li>Mathew Francis Betkouski Merit Scholarship[cite: 1]</li>
+                </ul>
+            </div>
+            <div class="card">
+                <div class="card-title">High School & Pre-College Programs</div>
+                <div class="card-subtitle">Bellarmine, Stanford, Georgia Tech[cite: 1]</div>
+                <ul>
+                    <li>Bellarmine College Preparatory – Diploma (2020 – 2024)[cite: 1]</li>
+                    <li>Stanford University – Programming Methodology in Python (Summer 2023)[cite: 1]</li>
+                    <li>Georgia Institute of Technology – New Young Leaders Forum: Engineering (2022)[cite: 1]</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Dominic Dietrich • Built using custom HTML/CSS framework[cite: 1]</p>
+    </footer>
+
+</body>
+</html>
