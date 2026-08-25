@@ -6,3 +6,4 @@ Fixes Needed:
 - website cleanup
 - updated resume
 - image integration and animations
+- improved contact section at bottom of page
