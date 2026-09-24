@@ -328,28 +328,31 @@
 
     <!-- Hero Section -->
     <header>
-    <section id="hero">
-        
-        <div class="hero-text">
-            <h3>DOMINIC D. DIETRICH</h3>
-            <h1>Hi, I'm Dominic</h1>
-            <p>Have a seat, drink some water. Engineering student,<br> 
-                programmer, content creator, lifeguard,<br> 
-                and high school principal bass flute (just me).  
-            </p>
-            <div class="cta-group">
-                <a href="mailto:dietrichdom05@gmail.com" class="btn-primary">Contact Me</a>
+        <section id="hero">
+            <!-- Flex Container: Wraps only Text + Avatar -->
+            <div style="display: flex; align-items: center; justify-content: space-between; gap: 2rem;">
+                <div class="hero-text" style="flex: 1;">
+                    <h3>DOMINIC D. DIETRICH</h3>
+                    <h1>Hi, I'm Dominic</h1>
+                    <p>Have a seat, drink some water. Engineering student,<br> 
+                        programmer, content creator, lifeguard,<br> 
+                        and high school principal bass flute (just me).  
+                    </p>
+                    <div class="cta-group">
+                        <a href="mailto:dietrichdom05@gmail.com" class="btn-primary">Contact Me</a>
+                    </div>
+                </div>
+                <!-- Right Column: Visual Avatar -->
+                <div class="hero-avatar" style="flex: 1; display: flex; justify-content: center; flex-shrink: 0;">
+                    <!-- Neon Frame Graphic Placeholder -->
+                    <div style="width: 320px; height: 320px; border: 2px solid var(--accent-blue); 
+                        border-radius: 50%; box-shadow: inset 0 0 20px var(--accent-glow); 
+                        display: flex; align-items: center; justify-content: center;">
+                        <span style="font-size: 9rem;">🖥️</span>
+                    </div>
+                </div>
             </div>
-        </div>
-        <!-- Right Column: Visual Avatar -->
-        <div class="hero-avatar">
-            <!-- Neon Frame Graphic Placeholder -->
-            <div style="width: 80%; height: 80%; border: 2px solid var(--accent-blue); 
-                border-radius: 50%; box-shadow: inset 0 0 20px var(--accent-glow); 
-                display: flex; align-items: center; justify-content: center;">
-                <span style="font-size: 9rem;">🖥️</span>
-            </div>
-        </div>
+        </section>
     </header>
 
     <!-- Tech Banner -->
