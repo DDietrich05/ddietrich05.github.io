@@ -323,13 +323,16 @@
         <a href="#projects">Projects</a>
         <a href="#experience">Experience</a>
         <a href="#education">Education</a>
-        <! a href="#contact"_Contact_/a_>
+        <!-- a href="#contact">Contact</a>-->
     </nav>
 
     <!-- Hero Section -->
     <header>
     <section id="hero">
-        <div class="hero-text">
+        <!-- Parent Container using CSS Flexbox -->
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 2rem;">   
+        <!-- Left Column: Text Content -->
+        <div class="hero-text" style="flex: 1;">
             <h3>DOMINIC D. DIETRICH</h3>
             <h1>Hi, I'm Dominic</h1>
             <p>Have a seat, drink some water. Engineering student,<br> 
@@ -340,13 +343,16 @@
                 <a href="mailto:dietrichdom05@gmail.com" class="btn-primary">Contact Me</a>
             </div>
         </div>
-        <div class="hero-avatar">
+        <!-- Right Column: Visual Avatar -->
+        <div class="hero-avatar" style="flex: 1; display: flex; justify-content: center;">
             <!-- Neon Frame Graphic Placeholder -->
-            <div style="width: 80%; height: 80%; border: 2px solid var(--accent-blue); border-radius: 50%; box-shadow: inset 0 0 20px var(--accent-glow); display: flex; align-items: center; justify-content: center;">
-                <span style="font-size: 12rem;">🖥️</span>
+            <div style="width: 80%; height: 80%; border: 2px solid var(--accent-blue); 
+                border-radius: 50%; box-shadow: inset 0 0 20px var(--accent-glow); 
+                display: flex; align-items: center; justify-content: center;">
+                <span style="font-size: 9rem;">🖥️</span>
             </div>
         </div>
-    </header>
+    </section>
 
     <!-- Tech Banner -->
     <div class="tech-banner">
